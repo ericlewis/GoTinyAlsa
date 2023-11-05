@@ -1,6 +1,6 @@
 package pcm
 
-import "GoTinyAlsa/internal/tinypcm"
+import "github.com/Binozo/GoTinyAlsa/internal/tinypcm"
 
 type Config struct {
 	Channels         int

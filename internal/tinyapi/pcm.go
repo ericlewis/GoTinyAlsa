@@ -6,8 +6,8 @@ package tinyapi
 // #include <tinyalsa/asoundlib.h>
 import "C"
 import (
-	"GoTinyAlsa/pkg/pcm"
 	"errors"
+	"github.com/Binozo/GoTinyAlsa/pkg/pcm"
 	"unsafe"
 )
 

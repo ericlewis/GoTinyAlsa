@@ -1,10 +1,10 @@
 package main
 
 import (
-	"GoTinyAlsa/pkg/pcm"
-	"GoTinyAlsa/pkg/tinyalsa"
 	"bytes"
 	"fmt"
+	"github.com/Binozo/GoTinyAlsa/pkg/pcm"
+	"github.com/Binozo/GoTinyAlsa/pkg/tinyalsa"
 	"github.com/youpy/go-wav"
 	"os"
 	"time"

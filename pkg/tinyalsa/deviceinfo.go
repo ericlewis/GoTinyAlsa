@@ -1,6 +1,6 @@
 package tinyalsa
 
-import "GoTinyAlsa/pkg/pcm"
+import "github.com/Binozo/GoTinyAlsa/pkg/pcm"
 
 type DeviceInfo struct {
 	Out pcm.Info

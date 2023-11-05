@@ -1,8 +1,8 @@
 package tinyalsa
 
 import (
-	"GoTinyAlsa/internal/tinyapi"
-	"GoTinyAlsa/pkg/pcm"
+	"github.com/Binozo/GoTinyAlsa/internal/tinyapi"
+	"github.com/Binozo/GoTinyAlsa/pkg/pcm"
 )
 
 const PCM_IN = tinyapi.PCM_IN

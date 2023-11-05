@@ -1,9 +1,9 @@
 package main
 
 import (
-	"GoTinyAlsa/pkg/pcm"
-	"GoTinyAlsa/pkg/tinyalsa"
 	"fmt"
+	"github.com/Binozo/GoTinyAlsa/pkg/pcm"
+	"github.com/Binozo/GoTinyAlsa/pkg/tinyalsa"
 )
 
 func main() {
