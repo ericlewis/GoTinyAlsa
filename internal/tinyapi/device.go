@@ -37,6 +37,15 @@ func (d *PcmDevice) ReadFrames(buffer []byte, size int) error {
 	return nil
 }
 
+func (d *PcmDevice) WriteFrames(buffer []byte, size int) error {
+	framesWritten := C.uint(C.pcm_write(d.pcmDevice, unsafe.Pointer(&buffer[0]), C.uint(size)))
+	if framesWritten != 0 {
+		// Error occurred
+		return errors.New(fmt.Sprintf("couldn't write frames:%d", int(framesWritten)))
+	}
+	return nil
+}
+
 func (d *PcmDevice) Close() {
 	C.pcm_close(d.pcmDevice)
 }
