@@ -34,3 +34,6 @@ jobs:
 
     - name: Build tinycap
       run: go build example/tinycap.go
+
+    - name: Build tinypcminfo
+      run: go build example/tinypcminfo.go
