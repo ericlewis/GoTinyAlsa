@@ -1,6 +1,6 @@
 package tinyapi
 
-// #cgo LDFLAGS: -L/usr/local/lib -ldl -ltinyalsa
+// #cgo LDFLAGS: -ldl -ltinyalsa
 // #include <stdio.h>
 // #include <stdlib.h>
 // #include <tinyalsa/asoundlib.h>
