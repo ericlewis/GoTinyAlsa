@@ -28,5 +28,8 @@ jobs:
         sudo make install
         sudo ldconfig
 
+    - name: Setup project
+      run: go get
+
     - name: Build tinycap
       run: go build example/tinycap.go
