@@ -29,7 +29,10 @@ jobs:
         sudo ldconfig
 
     - name: Setup project
-      run: go get
+      run: |
+        ls
+        cd GoTinyAlsa
+        go get
 
     - name: Build tinycap
       run: go build example/tinycap.go
