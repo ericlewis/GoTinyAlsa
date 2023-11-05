@@ -13,7 +13,7 @@ Features:
 
 ## Installation
 ```
-$ go get github.com/Binozo/GoTinyAlsa
+$ go get -u github.com/Binozo/GoTinyAlsa
 ```
 
 ## Quickstart
