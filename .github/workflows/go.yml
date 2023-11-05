@@ -8,6 +8,7 @@ on:
 
 jobs:
   compile_examples:
+    name: Compile examples
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -19,6 +20,7 @@ jobs:
 
     - name: Build tinyalsa
       run: |
+        mkdir -p /usr/local/include/
         git clone https://github.com/tinyalsa/tinyalsa.git
         cd tinyalsa
         make
