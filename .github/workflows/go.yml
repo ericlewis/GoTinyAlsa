@@ -20,9 +20,9 @@ jobs:
 
     - name: Update
       run: |
-        apt-get update -y
-        apt-get upgrade -y
-        apt-get install doxygen -y
+        sudo apt-get update -y
+        sudo apt-get upgrade -y
+        sudo apt-get install doxygen -y
 
     - name: Build tinyalsa
       run: |
@@ -31,8 +31,8 @@ jobs:
         git clone https://github.com/tinyalsa/tinyalsa.git
         cd tinyalsa
         make
-        make install
-        ldconfig
+        sudo make install
+        sudo ldconfig
 
     - name: Build tinycap
       run: go build example/tinycap.go
