@@ -7,3 +7,7 @@ Features:
 - 📱 Android support
 - 🤓☝️ well documented
 
+## Installation
+```
+$ go get github.com/Binozo/GoTinyAlsa
+```
