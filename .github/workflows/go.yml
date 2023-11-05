@@ -30,9 +30,7 @@ jobs:
 
     - name: Setup project
       run: |
-        ls
-        cd GoTinyAlsa
-        go get
+        go mod tidy
 
     - name: Build tinycap
       run: go build example/tinycap.go
