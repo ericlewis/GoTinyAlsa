@@ -1,9 +1,9 @@
-# GoTinyAlsa
+# GoTinyAlsa 🚀
 
 Go bindings for [TinyAlsa](https://github.com/tinyalsa/tinyalsa)
 
 Features:
-- ⚡ Easy yet powerful Api
+- ⚡ Easy yet powerful API
 - 📱 Android support
 - 🤓☝️ well documented
 
