@@ -11,6 +11,7 @@ const PCM_FORMAT_S16_BE = tinyapi.PCM_FORMAT_S16_BE
 const PCM_FORMAT_S24_LE = tinyapi.PCM_FORMAT_S24_LE
 const PCM_FORMAT_S24_BE = tinyapi.PCM_FORMAT_S24_BE
 const PCM_FORMAT_S24_3BE = tinyapi.PCM_FORMAT_S24_3BE
+const PCM_FORMAT_S24_3LE = tinyapi.PCM_FORMAT_S24_3LE
 const PCM_FORMAT_S32_LE = tinyapi.PCM_FORMAT_S32_LE
 const PCM_FORMAT_S32_BE = tinyapi.PCM_FORMAT_S32_BE
 const ErrorTolerance = 10 // defines how many error frames are allowed to be read without stopping reading the next ones
