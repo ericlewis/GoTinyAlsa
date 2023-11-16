@@ -28,11 +28,27 @@ func (d *PcmDevice) BitsPerSample() uint16 {
 	return d.Config.Format.BitsPerSample()
 }
 
+func (d *PcmDevice) GetError() error {
+	p := C.pcm_get_error(d.pcmDevice)
+	s := C.GoString(p)
+	if s == "" {
+		// Check if device is ready
+		if !d.IsReady() {
+			return errors.New("device is not ready")
+		}
+	}
+	return errors.New(s)
+}
+
+func (d *PcmDevice) IsReady() bool {
+	return C.pcm_is_ready(d.pcmDevice) == 1
+}
+
 func (d *PcmDevice) ReadFrames(buffer []byte, size int) error {
 	framesRead := C.uint(C.pcm_read(d.pcmDevice, unsafe.Pointer(&buffer[0]), C.uint(size)))
 	if framesRead != 0 {
 		// Error occurred
-		return errors.New(fmt.Sprintf("couldn't read frames:%d", int(framesRead)))
+		return errors.New(fmt.Sprintf("couldn't read frames: %s", d.GetError()))
 	}
 	return nil
 }
@@ -41,7 +57,7 @@ func (d *PcmDevice) WriteFrames(buffer []byte, size int) error {
 	framesWritten := C.uint(C.pcm_write(d.pcmDevice, unsafe.Pointer(&buffer[0]), C.uint(size)))
 	if framesWritten != 0 {
 		// Error occurred
-		return errors.New(fmt.Sprintf("couldn't write frames:%d", int(framesWritten)))
+		return errors.New(fmt.Sprintf("couldn't write frames: %s", d.GetError()))
 	}
 	return nil
 }

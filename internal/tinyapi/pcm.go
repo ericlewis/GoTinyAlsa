@@ -6,7 +6,6 @@ package tinyapi
 // #include <tinyalsa/asoundlib.h>
 import "C"
 import (
-	"errors"
 	"github.com/Binozo/GoTinyAlsa/pkg/pcm"
 	"unsafe"
 )
@@ -103,17 +102,16 @@ func PcmOpen(cardNr int, deviceNr int, openFlags int, config pcm.Config) (PcmDev
 
 	// Open device
 	var pcmDevice *C.struct_pcm = C.pcm_open(C.uint(cardNr), C.uint(deviceNr), C.uint(openFlags), internalConfig)
-
-	// Check if device is ready
-	if C.pcm_is_ready(pcmDevice) == 0 {
-		p := C.pcm_get_error(pcmDevice)
-		s := C.GoString(p)
-		return PcmDevice{}, errors.New(s)
-	}
-	return PcmDevice{
+	device := PcmDevice{
 		pcmDevice: pcmDevice,
 		Config:    config,
-	}, nil
+	}
+
+	// Check if device is ready
+	if !device.IsReady() {
+		return PcmDevice{}, device.GetError()
+	}
+	return device, nil
 }
 
 func GetParams(cardNr int, deviceNr int) (pcm.Info, pcm.Info) {
