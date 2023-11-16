@@ -21,6 +21,7 @@ const PCM_FORMAT_S32_LE = tinyapi.PCM_FORMAT_S32_LE
 const PCM_FORMAT_S32_BE = tinyapi.PCM_FORMAT_S32_BE
 const ErrorTolerance = 10 // defines how many error frames are allowed to be read without stopping reading the next ones
 
+// GetAudioStream Listens to the input of the defined device
 func (d *AlsaDevice) GetAudioStream(config pcm.Config, audioData chan []byte) error {
 	pcmDevice, err := tinyapi.PcmOpen(d.Card, d.Device, PCM_IN, config)
 	if err != nil {
@@ -61,6 +62,7 @@ FrameReader:
 	return nil
 }
 
+// SendAudioStream plays the given audio data (usually wav) to the device
 func (d *AlsaDevice) SendAudioStream(audioData []byte) error {
 	pcmDevice, err := tinyapi.PcmOpen(d.Card, d.Device, PCM_OUT, d.DeviceConfig)
 	if err != nil {

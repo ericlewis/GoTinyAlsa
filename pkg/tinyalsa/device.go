@@ -12,6 +12,7 @@ type AlsaDevice struct {
 	DeviceConfig pcm.Config
 }
 
+// NewDevice defines a new device you want to interact with
 func NewDevice(cardNr int, deviceNr int, deviceConfig pcm.Config) AlsaDevice {
 	return AlsaDevice{
 		Card:         cardNr,
@@ -20,6 +21,7 @@ func NewDevice(cardNr int, deviceNr int, deviceConfig pcm.Config) AlsaDevice {
 	}
 }
 
+// BestDeviceConfig return you the best device config to use
 func BestDeviceConfig(cardNr int, deviceNr int, format int) pcm.Config {
 	device := AlsaDevice{
 		Card:         cardNr,
@@ -42,6 +44,7 @@ func BestDeviceConfig(cardNr int, deviceNr int, format int) pcm.Config {
 	}
 }
 
+// GetInfo returns information data about the given device's input & output
 func (d *AlsaDevice) GetInfo() DeviceInfo {
 	inInfo, outInfo := tinyapi.GetParams(d.Card, d.Device)
 	return DeviceInfo{
