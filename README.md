@@ -7,10 +7,6 @@ Features:
 - 📱 Android support
 - 🤓☝️ well documented
 
-> [!IMPORTANT]
-> This library is still in development.
-> APIs to play audio are under construction 👷
-
 ## Installation
 ```
 $ go get -u github.com/Binozo/GoTinyAlsa
