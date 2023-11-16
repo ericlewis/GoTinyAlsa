@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"bytes"
 	"errors"
-	"fmt"
 	"github.com/Binozo/GoTinyAlsa/internal/tinyapi"
 	"github.com/Binozo/GoTinyAlsa/pkg/pcm"
 	"io"
@@ -24,7 +23,6 @@ const ErrorTolerance = 10 // defines how many error frames are allowed to be rea
 
 func (d *AlsaDevice) GetAudioStream(config pcm.Config, audioData chan []byte) error {
 	pcmDevice, err := tinyapi.PcmOpen(d.Card, d.Device, PCM_IN, config)
-	// TODO Check for hw: params error -> Recommend supported config
 	if err != nil {
 		return err
 	}
@@ -65,7 +63,6 @@ FrameReader:
 
 func (d *AlsaDevice) SendAudioStream(audioData []byte) error {
 	pcmDevice, err := tinyapi.PcmOpen(d.Card, d.Device, PCM_OUT, d.DeviceConfig)
-	// TODO Check for hw: params error -> Recommend supported config
 	if err != nil {
 		return err
 	}
@@ -82,7 +79,6 @@ func (d *AlsaDevice) SendAudioStream(audioData []byte) error {
 		if err != nil {
 			return err
 		}
-		fmt.Println("Read", n)
 		err = pcmDevice.WriteFrames(buffer, n)
 		if err != nil {
 			if errors.Is(err, io.EOF) {
