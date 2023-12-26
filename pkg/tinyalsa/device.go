@@ -54,6 +54,16 @@ func (d *AlsaDevice) GetInfo() DeviceInfo {
 	}
 }
 
+// IsReady returns if the device is ready
+func (d *AlsaDevice) IsReady(format int) (bool, error) {
+	pcmDevice, err := tinyapi.PcmOpen(d.Card, d.Device, format, d.DeviceConfig)
+	if err != nil {
+		return false, err
+	}
+	defer pcmDevice.Close()
+	return pcmDevice.IsReady(), nil
+}
+
 // WaitUntilReady waits until the device is ready or the timeout expired
 // If successful, nil will be returned. Otherwise, an error
 func (d *AlsaDevice) WaitUntilReady(format int, timeout time.Duration) error {
