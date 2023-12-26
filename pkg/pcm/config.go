@@ -11,7 +11,7 @@ type Config struct {
 	PeriodSize int
 	// Number of periods
 	PeriodCount int
-	// IO Format
+	// Audiocodec (e.g. tinyalsa.PCM_FORMAT_S24_LE)
 	Format           tinypcm.Format
 	StartThreshold   int
 	StopThreshold    int
