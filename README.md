@@ -54,3 +54,12 @@ func main() {
 	})
 }
 ```
+
+### Wait until it's ready
+```go
+    // Wait until our microphone (PCM_IN) input is ready with the maximum duration of 2 seconds
+	err := device.WaitUntilReady(tinyalsa.PCM_IN, time.Second*2)
+	if err != nil {
+		fmt.Println("An error occurred while waiting until device is ready:", err)
+	}
+```
