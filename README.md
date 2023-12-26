@@ -16,6 +16,23 @@ $ go get -u github.com/Binozo/GoTinyAlsa
 > [!NOTE]
 > Take a look at the `examples` folder for example usage.
 
+## Troubleshooting
+#### Linking
+If you get the following error: `error while loading shared libraries: libtinyalsa.so.2: cannot open shared object file: No such file or directory`
+and you built tinyalsa from source, make sure you set `LD_LIBRARY_PATH=/usr/local/lib` as an environment variable.
+
+#### Deprecation warnings
+Those warnings
+```shell
+# github.com/Binozo/GoTinyAlsa/internal/tinyapi
+cgo-gcc-prolog: In function ‘_cgo_ee639364c86c_Cfunc_pcm_read’:
+cgo-gcc-prolog:152:2: warning: ‘pcm_read’ is deprecated [-Wdeprecated-declarations]
+In file included from /usr/local/include/tinyalsa/asoundlib.h:33,
+from ../internal/tinyapi/device.go:5:
+```
+are normal and to ensure compatibility with Android, we need to use those deprecated functions.
+Take a look [here](https://github.com/tinyalsa/tinyalsa/blob/google-origin/include/tinyalsa/asoundlib.h) for available APIs for the Android platform.
+
 ### Create your device
 ```go
 package main
