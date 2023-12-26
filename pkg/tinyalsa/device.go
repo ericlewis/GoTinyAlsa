@@ -4,6 +4,7 @@ import (
 	"github.com/Binozo/GoTinyAlsa/internal/tinyapi"
 	"github.com/Binozo/GoTinyAlsa/internal/tinypcm"
 	"github.com/Binozo/GoTinyAlsa/pkg/pcm"
+	"time"
 )
 
 type AlsaDevice struct {
@@ -51,4 +52,15 @@ func (d *AlsaDevice) GetInfo() DeviceInfo {
 		In:  inInfo,
 		Out: outInfo,
 	}
+}
+
+// WaitUntilReady waits until the device is ready or the timeout expired
+// If successful, nil will be returned. Otherwise, an error
+func (d *AlsaDevice) WaitUntilReady(format int, timeout time.Duration) error {
+	pcmDevice, err := tinyapi.PcmOpen(d.Card, d.Device, format, d.DeviceConfig)
+	if err != nil {
+		return err
+	}
+	defer pcmDevice.Close()
+	return pcmDevice.WaitUntilReady(timeout)
 }
