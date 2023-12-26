@@ -109,6 +109,11 @@ func PcmOpen(cardNr int, deviceNr int, openFlags int, config pcm.Config) (PcmDev
 
 	// Check if device is ready
 	if !device.IsReady() {
+		errorMsg := device.getErrorMsg()
+		if errorMsg == "" {
+			// No real error occurred. Continue as normal
+			return device, nil
+		}
 		return PcmDevice{}, device.GetError()
 	}
 	return device, nil

@@ -30,15 +30,19 @@ func (d *PcmDevice) BitsPerSample() uint16 {
 }
 
 func (d *PcmDevice) GetError() error {
-	p := C.pcm_get_error(d.pcmDevice)
-	s := C.GoString(p)
-	if s == "" {
+	message := d.getErrorMsg()
+	if message == "" {
 		// Check if device is ready
 		if !d.IsReady() {
 			return errors.New("device is not ready")
 		}
 	}
-	return errors.New(s)
+	return errors.New(message)
+}
+
+func (d *PcmDevice) getErrorMsg() string {
+	p := C.pcm_get_error(d.pcmDevice)
+	return C.GoString(p)
 }
 
 func (d *PcmDevice) IsReady() bool {
