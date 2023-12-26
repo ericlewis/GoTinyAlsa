@@ -18,6 +18,11 @@ func main() {
 		PeriodCount: 20,
 		Format:      tinyalsa.PCM_FORMAT_S16_LE,
 	})
+	fmt.Println("Waiting until device is ready...")
+	err := device.WaitUntilReady(tinyalsa.PCM_IN, time.Second*2)
+	if err != nil {
+		fmt.Println("An error occurred while waiting until device is ready:", err)
+	}
 	audioChan := make(chan []byte)
 	go func() {
 		err := device.GetAudioStream(device.DeviceConfig, audioChan)
