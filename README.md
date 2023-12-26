@@ -11,11 +11,6 @@ Features:
 ```
 $ go get -u github.com/Binozo/GoTinyAlsa
 ```
-
-## Quickstart
-> [!NOTE]
-> Take a look at the `examples` folder for example usage.
-
 ## Troubleshooting
 #### Linking
 If you get the following error: `error while loading shared libraries: libtinyalsa.so.2: cannot open shared object file: No such file or directory`
@@ -32,6 +27,10 @@ from ../internal/tinyapi/device.go:5:
 ```
 are normal and to ensure compatibility with Android, we need to use those deprecated functions.
 Take a look [here](https://github.com/tinyalsa/tinyalsa/blob/google-origin/include/tinyalsa/asoundlib.h) for available APIs for the Android platform.
+
+## Quickstart
+> [!NOTE]
+> Take a look at the `examples` folder for example usage.
 
 ### Create your device
 ```go
