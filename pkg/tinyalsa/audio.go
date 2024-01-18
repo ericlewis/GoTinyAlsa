@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"bytes"
 	"errors"
-	"fmt"
 	"github.com/Binozo/GoTinyAlsa/internal/tinyapi"
 	"github.com/Binozo/GoTinyAlsa/pkg/pcm"
 	"io"
@@ -51,12 +50,12 @@ FrameReader:
 		defer func() {
 			if r := recover(); r != nil {
 				// Channel is probably closed!
-				fmt.Println("Channel closed?", r)
 			}
 		}()
 		select {
 		case audioData <- buffer:
 			// Successfully sent audio data back to the api
+			continue
 		case <-time.After(writeTimeout):
 			// Chan got closed, we need to close too
 			break FrameReader
