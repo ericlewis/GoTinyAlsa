@@ -8,6 +8,7 @@ import (
 	"github.com/Binozo/GoTinyAlsa/internal/tinyapi"
 	"github.com/Binozo/GoTinyAlsa/pkg/pcm"
 	"io"
+	"time"
 )
 
 const PCM_IN = tinyapi.PCM_IN
@@ -36,6 +37,7 @@ func (d *AlsaDevice) GetAudioStream(config pcm.Config, audioData chan []byte) er
 	}
 
 	errorCount := 0
+	writeTimeout := time.Second * 5
 FrameReader:
 	for {
 		err := pcmDevice.ReadFrames(buffer, size)
@@ -55,7 +57,7 @@ FrameReader:
 		select {
 		case audioData <- buffer:
 			// Successfully sent audio data back to the api
-		default:
+		case <-time.After(writeTimeout):
 			// Chan got closed, we need to close too
 			break FrameReader
 		}
