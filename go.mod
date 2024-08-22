@@ -1,4 +1,4 @@
-module github.com/Binozo/GoTinyAlsa
+module github.com/ericlewis/GoTinyAlsa
 
 go 1.20
 
