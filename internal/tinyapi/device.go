@@ -7,9 +7,10 @@ import "C"
 import (
 	"errors"
 	"fmt"
-	"github.com/Binozo/GoTinyAlsa/pkg/pcm"
 	"time"
 	"unsafe"
+
+	"github.com/ericlewis/GoTinyAlsa/pkg/pcm"
 )
 
 type PcmDevice struct {

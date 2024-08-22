@@ -6,8 +6,9 @@ package tinyapi
 // #include <tinyalsa/asoundlib.h>
 import "C"
 import (
-	"github.com/Binozo/GoTinyAlsa/pkg/pcm"
 	"unsafe"
+
+	"github.com/ericlewis/GoTinyAlsa/pkg/pcm"
 )
 
 const PCM_IN = C.PCM_IN

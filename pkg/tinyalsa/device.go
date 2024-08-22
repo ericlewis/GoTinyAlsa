@@ -1,10 +1,11 @@
 package tinyalsa
 
 import (
-	"github.com/Binozo/GoTinyAlsa/internal/tinyapi"
-	"github.com/Binozo/GoTinyAlsa/internal/tinypcm"
-	"github.com/Binozo/GoTinyAlsa/pkg/pcm"
 	"time"
+
+	"github.com/ericlewis/GoTinyAlsa/internal/tinyapi"
+	"github.com/ericlewis/GoTinyAlsa/internal/tinypcm"
+	"github.com/ericlewis/GoTinyAlsa/pkg/pcm"
 )
 
 type AlsaDevice struct {

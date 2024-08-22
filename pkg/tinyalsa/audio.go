@@ -4,10 +4,11 @@ import (
 	"bufio"
 	"bytes"
 	"errors"
-	"github.com/Binozo/GoTinyAlsa/internal/tinyapi"
-	"github.com/Binozo/GoTinyAlsa/pkg/pcm"
 	"io"
 	"time"
+
+	"github.com/ericlewis/GoTinyAlsa/internal/tinyapi"
+	"github.com/ericlewis/GoTinyAlsa/pkg/pcm"
 )
 
 const PCM_IN = tinyapi.PCM_IN

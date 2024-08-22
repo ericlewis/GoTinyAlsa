@@ -1,6 +1,6 @@
 package tinyalsa
 
-import "github.com/Binozo/GoTinyAlsa/pkg/pcm"
+import "github.com/ericlewis/GoTinyAlsa/pkg/pcm"
 
 type DeviceInfo struct {
 	// Output info (e.g. speaker)

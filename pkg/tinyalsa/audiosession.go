@@ -3,7 +3,7 @@ package tinyalsa
 import (
 	"time"
 
-	"github.com/Binozo/GoTinyAlsa/internal/tinyapi"
+	"github.com/ericlewis/GoTinyAlsa/internal/tinyapi"
 )
 
 type AudioSession struct {

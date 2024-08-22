@@ -1,6 +1,6 @@
 package pcm
 
-import "github.com/Binozo/GoTinyAlsa/internal/tinypcm"
+import "github.com/ericlewis/GoTinyAlsa/internal/tinypcm"
 
 type Config struct {
 	// The number of audio channels
