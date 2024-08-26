@@ -95,6 +95,10 @@ func (d *PcmDevice) WriteFrames(buffer []byte, size int) error {
 	return nil
 }
 
+func (d *PcmDevice) Stop() {
+	C.pcm_stop(d.pcmDevice)
+}
+
 func (d *PcmDevice) Close() {
 	C.pcm_close(d.pcmDevice)
 }

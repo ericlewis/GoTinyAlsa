@@ -27,6 +27,10 @@ func (a *AudioSession) Close() {
 	a.pcmDevice.Close()
 }
 
+func (a *AudioSession) Stop() {
+	a.pcmDevice.Stop()
+}
+
 // BufferSize returns the buffer size expected by the device
 func (a *AudioSession) BufferSize() int {
 	return a.pcmDevice.FrameBytesSize()
